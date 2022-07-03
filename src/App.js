@@ -1,9 +1,11 @@
+import Music from "./components/music"
+
 function App() {
-  return (
-    <>
-    
-    </>
-  )
+    return (
+        <>
+            <Music />
+        </>
+    )
 }
 
-export default App;
+export default App

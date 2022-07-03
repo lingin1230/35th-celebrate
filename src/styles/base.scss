@@ -1,4 +1,28 @@
-html, .bosy {
+@mixin flex-center {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+@mixin content {
+   width: 85%;
+   min-width: 1200px;
+}
+@mixin bg-image {
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+
+html, body, #app {
+   @include flex-center;
    width: 100vw;
    height: 100vh;
+   margin: 0;
+   padding: 0;
+
+   .content {
+      @include content;
+      @include flex-center;
+   }
 }
+
+@import "components/music.scss";
