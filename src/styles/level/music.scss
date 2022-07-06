@@ -3,7 +3,22 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: #CCB88F;
+    // background-color: #CCB88F;
+
+    &::after {
+        content: '';
+        @include bg-image;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        background-image: url('../assets/images/music-bg.jpg');
+        background-size: cover;
+        background-blend-mode: darken;
+        filter: brightness(0.6);
+    }
 
     .content {
         flex-direction: column;

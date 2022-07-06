@@ -25,4 +25,8 @@ html, body, #app {
    }
 }
 
-@import "components/music.scss";
+@import "level/music.scss";
+@import "level/monster.scss";
+@import "level/maze.scss";
+@import "pages/foreword.scss";
+@import "pages/lobby.scss";
