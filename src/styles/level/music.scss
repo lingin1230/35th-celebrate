@@ -8,7 +8,8 @@
     &::after {
         content: '';
         @include bg-image;
-        width: 100%;
+        min-width: 1400px;
+        width: 100vw;
         height: 100%;
         position: absolute;
         z-index: -1;
@@ -16,187 +17,262 @@
         left: 0;
         background-image: url('../assets/images/music-bg.jpg');
         background-size: cover;
-        background-blend-mode: darken;
-        filter: brightness(0.6);
+        background-position: center;
+    }
+    .customer {
+        position: absolute;
+        // background-color: #00000050;
+        cursor: pointer;
+
+        &.wizard {
+            width: 200px;
+            height: 400px;
+            bottom: 0px;
+            left: 1201px;
+
+            &.talk {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    @include bg-image;
+                    width: 50%;
+                    left: 100%;
+                    aspect-ratio: 50/55;
+                    background-image: url('../assets/images/talk-1.png');
+                }
+            }
+        }
+        &.mummy {
+            width: 170px;
+            height: 350px;
+            bottom: 415px;
+            left: 135px;
+
+            &.talk {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    @include bg-image;
+                    width: 60%;
+                    left: 100%;
+                    top: -10%;
+                    aspect-ratio: 50/50;
+                    background-image: url('../assets/images/talk-2.png');
+                }
+            }
+        }
+        &.cat {
+            width: 170px;
+            height: 170px;
+            top: 12px;
+            left: 742px;
+
+            &.talk {
+                &::after {
+                    content: "你要找的人剛剛被抓走了，如果你彈一首讓我滿意的好曲子我就告訴他們前往哪裡了！";
+                    position: absolute;
+                    @include bg-image;
+                    padding: 1%;
+                    width: 120%;
+                    top: 10%;
+                    left: 100%;
+                    aspect-ratio: 100 / 64;
+                    background-image: url('../assets/images/talk-3.png');
+                    padding-left: 9%;
+                    box-sizing: border-box;
+                }
+            }
+        }
     }
 
     .content {
-        flex-direction: column;
-        position: relative;
-        height: 100%;
+        .piano-popup {
+            @include flex-center;
+            width: 100vw;
+            height: 100vh;
+            flex-direction: column;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
 
-        .piano {
-            @include bg-image;
-            margin-top: 5%;
-            aspect-ratio: 4/3;
-            width: 50%;
-            background-image: url('../assets/images/piano.png');
-        }
-        .error {
-            @include bg-image;
-            position: absolute;
-            top: 10%;
-            left: 47.5%;
-            aspect-ratio: 50/45;
-            width: 5%;
-            background-image: url('../assets/images/error.png');
-            opacity: 0;
-            transform: translateX(0%) translateY(0%);
-            transition: opacity .5, transform .5s;
-
-            &.active {
-                animation: 1s error;
-            }
-        }
-        @keyframes error {
-            0% {
-                opacity: 0;
-                transform: translateX(0%) translateY(0%);
-            }
-            20% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0%);
-            }
-            40% {
-                transform: translateX(25%) translateY(0%);
-            }
-            60% {
-                transform: translateX(-12.5%) translateY(0%);
-            }
-            80% {
-                transform: translateX(6%) translateY(0%);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(0%) translateY(0%);
-                opacity: 0;
-            }
-        }
-
-        .success {
-            @include bg-image;
-            position: absolute;
-            top: 30%;
-            left: 38%;
-            aspect-ratio: 50/45;
-            width: 25%;
-            background-image: url('../assets/images/success.png');
-            opacity: 0;
-            transition: opacity .5, transform .5s;
-
-            &.active {
-                opacity: 1;
-            }
-        }
-        .note {
-            @include bg-image;
-            position: absolute;
-            opacity: 0;
-            transition: opacity .5, transform .5s;
-            transform: translateX(0%) translateY(0%);
-
-            &-1 {
-                top: 15%;
-                left: 20%;
-                aspect-ratio: 240/624;
-                width: 5%;
-                background-image: url('../assets/images/note-1.png');
-            }
-            &-2 {
-                top: 50%;
-                left: 75%;
-                aspect-ratio: 1;
-                width: 5%;
-                background-image: url('../assets/images/note-2.png');
-            }
-            &-3 {
-                top: 57%;
-                left: 15%;
-                aspect-ratio: 1;
-                width: 5%;
-                background-image: url('../assets/images/note-3.png');
-            }
-            &-4 {
-                top: 22%;
-                left: 80%;
-                aspect-ratio: 20/16;
-                width: 3%;
-                background-image: url('../assets/images/note-4.png');
-            }
-            &-5 {
-                top: 12%;
-                left: 45%;
-                aspect-ratio: 20/16;
-                width: 3.5%;
-                background-image: url('../assets/images/note-5.png');
-            }
-
-            &:nth-of-type(n) {
-                &.active {
-                    animation: note-float-left 2s;
-                }
-            }
-            &:nth-of-type(2n) {
-                &.active {
-                    animation: note-float-right 2s;
-                }
-            }
-
-            @keyframes note-float-left {
-                0% {
-                    transform: translateX(0%) translateY(0%);
-                    opacity: 0;
-                }
-                25% {
-                    opacity: 1;
-                }
-                75% {
-                    opacity: 0;
-                }
-                100% {
-                    transform: translateX(-100%) translateY(-50%);
-                    opacity: 0;
-                }
-            }
-            @keyframes note-float-right {
-                0% {
-                    transform: translateX(0%) translateY(0%);
-                    opacity: 0;
-                }
-                25% {
-                    opacity: 1;
-                }
-                75% {
-                    opacity: 0;
-                }
-                100% {
-                    transform: translateX(100%) translateY(-50%);
-                    opacity: 0;
-                }
-            }
-        }
-        button.start {
-            @include bg-image;
-            margin-top: 3%;
-            border: none;
-            background-color: transparent;
-            aspect-ratio: 500/178;
-            width: 25%;
-            background-image: url('../assets/images/start.png');
-            opacity: 0;
-            cursor: none;
-            transition: opacity .3s;
-
-            &:focus-visible {
-                outline: none;
-            }
-            &:hover {
-                filter: brightness(0.9);
-            }
             &.show {
-                cursor: pointer;
-                opacity: 1;
+                display: flex;
+            }
+
+            .piano {
+                @include bg-image;
+                margin-top: 5%;
+                aspect-ratio: 4/3;
+                width: 30%;
+                background-image: url('../assets/images/piano.png');
+            }
+            .error {
+                @include bg-image;
+                position: absolute;
+                top: 10%;
+                left: 47.5%;
+                aspect-ratio: 50/45;
+                width: 5%;
+                background-image: url('../assets/images/error.png');
+                opacity: 0;
+                transform: translateX(0%) translateY(0%);
+                transition: opacity .5, transform .5s;
+    
+                &.active {
+                    animation: 1s error;
+                }
+            }
+            @keyframes error {
+                0% {
+                    opacity: 0;
+                    transform: translateX(0%) translateY(0%);
+                }
+                20% {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0%);
+                }
+                40% {
+                    transform: translateX(25%) translateY(0%);
+                }
+                60% {
+                    transform: translateX(-12.5%) translateY(0%);
+                }
+                80% {
+                    transform: translateX(6%) translateY(0%);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateX(0%) translateY(0%);
+                    opacity: 0;
+                }
+            }
+    
+            .success {
+                @include bg-image;
+                position: absolute;
+                top: 33%;
+                left: 40%;
+                aspect-ratio: 50/45;
+                width: 20%;
+                background-image: url('../assets/images/success.png');
+                opacity: 0;
+                transition: opacity .5, transform .5s;
+    
+                &.active {
+                    opacity: 1;
+                }
+            }
+            .note {
+                @include bg-image;
+                position: absolute;
+                opacity: 0;
+                transition: opacity .5, transform .5s;
+                transform: translateX(0%) translateY(0%);
+    
+                &-1 {
+                    top: 15%;
+                    left: 20%;
+                    aspect-ratio: 240/624;
+                    width: 5%;
+                    background-image: url('../assets/images/note-1.png');
+                }
+                &-2 {
+                    top: 50%;
+                    left: 75%;
+                    aspect-ratio: 1;
+                    width: 5%;
+                    background-image: url('../assets/images/note-2.png');
+                }
+                &-3 {
+                    top: 57%;
+                    left: 15%;
+                    aspect-ratio: 1;
+                    width: 5%;
+                    background-image: url('../assets/images/note-3.png');
+                }
+                &-4 {
+                    top: 22%;
+                    left: 80%;
+                    aspect-ratio: 20/16;
+                    width: 3%;
+                    background-image: url('../assets/images/note-4.png');
+                }
+                &-5 {
+                    top: 12%;
+                    left: 45%;
+                    aspect-ratio: 20/16;
+                    width: 3.5%;
+                    background-image: url('../assets/images/note-5.png');
+                }
+    
+                &:nth-of-type(n) {
+                    &.active {
+                        animation: note-float-left 2s;
+                    }
+                }
+                &:nth-of-type(2n) {
+                    &.active {
+                        animation: note-float-right 2s;
+                    }
+                }
+    
+                @keyframes note-float-left {
+                    0% {
+                        transform: translateX(0%) translateY(0%);
+                        opacity: 0;
+                    }
+                    25% {
+                        opacity: 1;
+                    }
+                    75% {
+                        opacity: 0;
+                    }
+                    100% {
+                        transform: translateX(-100%) translateY(-50%);
+                        opacity: 0;
+                    }
+                }
+                @keyframes note-float-right {
+                    0% {
+                        transform: translateX(0%) translateY(0%);
+                        opacity: 0;
+                    }
+                    25% {
+                        opacity: 1;
+                    }
+                    75% {
+                        opacity: 0;
+                    }
+                    100% {
+                        transform: translateX(100%) translateY(-50%);
+                        opacity: 0;
+                    }
+                }
+            }
+            button.start {
+                @include bg-image;
+                margin-top: 3%;
+                border: none;
+                background-color: transparent;
+                aspect-ratio: 500/178;
+                width: 18%;
+                background-image: url('../assets/images/start.png');
+                opacity: 0;
+                cursor: none;
+                transition: opacity .3s;
+    
+                &:focus-visible {
+                    outline: none;
+                }
+                &:hover {
+                    filter: brightness(0.9);
+                }
+                &.show {
+                    cursor: pointer;
+                    opacity: 1;
+                }
             }
         }
+        
     }
 }

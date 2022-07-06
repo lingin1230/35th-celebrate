@@ -23,7 +23,9 @@ html, body, #app {
    // font-family: 'Chakra Petch', sans-serif;
    // font-family: 'Noto Sans TC', sans-serif;
    letter-spacing: 1.5px;
-   text-align: center;
+   // text-align: center;
+
+   -webkit-tap-highlight-color: transparent;
 
    .content {
       @include content;
