@@ -1,7 +1,7 @@
 {
   "level_status": {
-    "music": "complete",
-    "monster": "unlock",
+    "music": "unlock",
+    "monster": "lock",
     "maze": "lock"
   }
 }
