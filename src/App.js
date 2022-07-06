@@ -11,6 +11,7 @@ function App() {
     const [ musicStatus, setMusicStatus ] = useState('unlock')
     const [ monsterStatus, setMonsterStatus ] = useState('lock')
     const [ mazeStatus, setMazeStatus ] = useState('lock')
+
     // 已開放尚未完成 unlock、已開放已完成 complete、尚未開放 lock
 
     return (

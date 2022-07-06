@@ -18,26 +18,42 @@ export default function Lobby(props) {
         
         for (let i = 0; i < 3; i++) {
             const doorClass = classNames('door', `door-${level[i]}`, {
-                'open': openDoor === i,
+                'open': openDoor === i && levelStatus[i] === 'unlock',
                 'unlock': levelStatus[i] === 'unlock',
                 'lock': levelStatus[i] === 'lock',
                 'complete': levelStatus[i] === 'complete',
             })
+
+            function handleDoorClick(index) {
+                setOpenDoor(index)
+                
+                if (levelStatus[i] === 'unlock') {
+                    setTimeout(() => {
+                        document.location.href=`/level/${level[i]}`
+                    }, [1500])
+                }
+            }
+
             door.push(
-                <div
-                    className={doorClass}
-                    key={`door-${i + 1}`}
-                    onClick={() => setOpenDoor(i)}
-                ></div>
+                <div className="door-bg" key={`door-${i + 1}`}>
+                    <div
+                        className={doorClass}
+                        onClick={() => {handleDoorClick(i)}}
+                    ></div>
+                </div>
             )
         }
         setDoors(door)
 
-    }, [musicStatus, mazeStatus, monsterStatus])
+    }, [musicStatus, mazeStatus, monsterStatus, openDoor])
 
     return (
         <div className="lobby">
-            {doors}
+            <div className="content">
+                <div className="door-area">
+                    {doors}
+                </div>
+            </div>
         </div>
     )
 }
