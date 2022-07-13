@@ -32,7 +32,8 @@
                 width: 100%;
                 height: 100%;
                 transform: perspective(0)rotateY(0)translateX(0x)scaleX(0)scale(0);
-                // transition: transform 1s;
+
+                transition: transform 1s ,margin-left .9s .1s;
     
                 &-music {
                     background-image: url('../assets/images/door-1.png');
@@ -65,7 +66,8 @@
                     }
                 }
                 &.open {
-                    transform: perspective(5px)rotateY(-1deg)translateX(-75px)scaleX(0.5)scale(1.55);
+                    margin-left: -67px;
+                    transform: perspective(5px) rotateY(-1deg) scaleX(.5) scale(1.33);
                 }
             }
         }

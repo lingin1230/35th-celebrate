@@ -21,6 +21,7 @@ export default function Music(props) {
     const [ currentNote, setCurrentNote ] = useState(0)
     const [ talk, setTalk ] = useState(null)
     const [ piano, setPiano ] = useState(false)
+    const [ sick, setSick ] = useState(false)
 
     const sound = useRef()
     const bgSound = useRef()
@@ -102,13 +103,21 @@ export default function Music(props) {
         setMusicNote(notes)
     }, [activeNote])
 
-    useEffect(() => {
-        if (talk === 'cat') {
+    function avatarClick(avatar) {
+        setTalk(avatar)
+        if (avatar === 'cat') {
             setTimeout(() => {
                 setPiano(true)
             }, [3000])
         }
-    }, [talk])
+    }
+
+    function closePopup() {
+        const targetChild = event.target.children
+        if (targetChild.length === 1 && targetChild[0].className === 'popup-content') {
+            setTalk(null)
+        }
+    }
 
     const errorClass = classNames('error', {
         'active': game === 'error'
@@ -122,8 +131,15 @@ export default function Music(props) {
     const wizardClass = classNames('customer', 'wizard', {
         'talk': talk === 'wizard'
     })  
-    const mummyClass = classNames('customer', 'mummy', {
-        'talk': talk === 'mummy'
+    const ghostClass = classNames('customer', 'ghost', {
+        'talk': talk === 'ghost'
+    })
+    const potClass = classNames('customer', 'pot', {
+        'talk': talk === 'pot'
+    })
+    const tableClass = classNames('customer', 'table', {
+        'talk': talk === 'table',
+        'sick': sick
     })
     const catClass = classNames('customer', 'cat', {
         'talk': talk === 'cat'
@@ -138,9 +154,28 @@ export default function Music(props) {
                 <audio ref={sound}></audio>
                 <audio ref={bgSound}></audio>
 
-                <div className={wizardClass} onClick={() => {setTalk('wizard')}}></div>
-                <div className={mummyClass} onClick={() => {setTalk('mummy')}}></div>
-                <div className={catClass} onClick={() => {setTalk('cat')}}>
+                <div className={wizardClass} onClick={() => {avatarClick('wizard')}}></div>
+                <div className={ghostClass} onClick={() => {avatarClick('ghost')}}></div>
+                
+                <div className={potClass} onClick={() => {avatarClick('pot')}}></div>
+                <div className="pot-popup" onClick={closePopup}>
+                    <div className="popup-content">
+                        <div className="hot-pot"></div>
+                    </div>
+                </div>
+
+                <div className={tableClass} onClick={() => {avatarClick('table')}}></div>
+                <div className="table-popup" onClick={closePopup}>
+                    <div className="popup-content">
+                        <div className="food-area">
+                            <div className="food food-1" onClick={() => {setSick(true)}}></div>
+                            <div className="food food-2" onClick={() => {setSick(true)}}></div>
+                            <div className="food food-3" onClick={() => {setSick(true)}}></div>
+                        </div>
+                        <div className="sick"></div>
+                    </div>
+                </div>
+                <div className={catClass} onClick={() => {avatarClick('cat')}}>
                     <div className="talk"></div>
                 </div>
                 <div className="content">

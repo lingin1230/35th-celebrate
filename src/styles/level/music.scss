@@ -15,9 +15,9 @@
         z-index: -1;
         top: 0;
         left: 0;
-        background-image: url('../assets/images/music-bg.jpg');
+        background-image: url('../assets/images/music/music-bg.png');
         background-size: cover;
-        background-position: center;
+        background-position: 0% 100%;
     }
     .customer {
         position: absolute;
@@ -25,10 +25,13 @@
         cursor: pointer;
 
         &.wizard {
-            width: 200px;
-            height: 400px;
-            bottom: 0px;
+            @include bg-image;
+            aspect-ratio: 500/1060;
+            // width: 200px;
+            height: 350px;
+            bottom: 45px;
             left: 1201px;
+            background-image: url('../assets/images/music/wizard.png');
 
             &.talk {
                 &::after {
@@ -38,15 +41,17 @@
                     width: 50%;
                     left: 100%;
                     aspect-ratio: 50/55;
-                    background-image: url('../assets/images/talk-1.png');
+                    background-image: url('../assets/images/music/talk-1.png');
                 }
             }
         }
-        &.mummy {
-            width: 170px;
-            height: 350px;
-            bottom: 415px;
-            left: 135px;
+        &.ghost {
+            @include bg-image;
+            aspect-ratio: 449/832;
+            height: 270px;
+            bottom: 700px;
+            left: 1545px;
+            background-image: url('../assets/images/music/ghost.png');
 
             &.talk {
                 &::after {
@@ -57,34 +62,176 @@
                     left: 100%;
                     top: -10%;
                     aspect-ratio: 50/50;
-                    background-image: url('../assets/images/talk-2.png');
+                    background-image: url('../assets/images/music/talk-2.png');
+                }
+            }
+        }
+        &.pot {
+            @include bg-image;
+            aspect-ratio: 801/596;
+            height: 270px;
+            bottom: 700px;
+            left: -90px;
+            background-image: url('../assets/images/music/pot.png');
+
+            &.talk {
+                + .pot-popup {
+                    display: flex;
+                }
+            }
+        }
+        &.table {
+            @include bg-image;
+            aspect-ratio: 1440/929;
+            height: 281px;
+            bottom: 45px;
+            left: 520px;
+            background-image: url('../assets/images/music/table.png');
+
+            &.talk {
+                + .table-popup {
+                    display: flex;
+                }
+            }
+            &.sick {
+                + .table-popup {
+                    .food-area {
+                        display: none;
+                    }
+                    .sick {
+                        display: block;
+                    }
                 }
             }
         }
         &.cat {
-            width: 170px;
-            height: 170px;
-            top: 12px;
+            @include bg-image;
+            aspect-ratio: 1;
+            width: 150px;
+            bottom: 860px;
             left: 742px;
+            background-image: url('../assets/images/music/cat.png');
 
             &.talk {
                 &::after {
                     content: "你要找的人剛剛被抓走了，如果你彈一首讓我滿意的好曲子我就告訴他們前往哪裡了！";
                     position: absolute;
                     @include bg-image;
-                    padding: 1%;
-                    width: 120%;
+                    width: 150%;
                     top: 10%;
                     left: 100%;
                     aspect-ratio: 100 / 64;
-                    background-image: url('../assets/images/talk-3.png');
-                    padding-left: 9%;
+                    background-image: url('../assets/images/music/talk-3.png');
+                    padding: 5% 6% 1% 12%;
                     box-sizing: border-box;
                 }
             }
         }
     }
 
+    .pot-popup {
+        @include flex-center;
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 100;
+
+        .popup-content {
+            @include bg-image;
+            @include flex-center;
+            position: relative;
+            flex-direction: column;
+            aspect-ratio: 2177/1473;
+            width: 60%;
+            background-image: url('../assets/images/music/board.png');
+
+
+            &::before {
+                content: '你泡了一場熱水澡，覺得通體舒暢';
+                display: block;
+                font-size: 30px;
+                margin-bottom: 50px;
+            }
+            .hot-pot {
+                @include bg-image;
+                @include flex-center;
+                aspect-ratio: 3200/3760;
+                width: 35%;
+                background-image: url('../assets/images/music/hot-pot.png');
+            }
+        }
+    }
+
+
+    .table-popup {
+        @include flex-center;
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 100;
+
+        .popup-content {
+            @include bg-image;
+            @include flex-center;
+            position: relative;
+            flex-direction: column;
+            aspect-ratio: 2177/1473;
+            width: 60%;
+            background-image: url('../assets/images/music/board.png');
+
+            &::before {
+                content: '這裡的食物都有種奇怪的味道...';
+                display: block;
+                font-size: 30px;
+                margin-bottom: 70px;
+            }
+
+            .food-area {
+                @include flex-center;
+                justify-content: space-between;
+                width: 80%;
+
+                .food {
+                    @include bg-image;
+                    cursor: pointer;
+
+                    &-1 {
+                        aspect-ratio: 5018/3636;
+                        width: 33%;
+                        background-image: url('../assets/images/music/steak.png');
+                        margin-top: -30px;
+                    }
+
+                    &-2 {
+                        aspect-ratio:3851/3688;
+                        width: 28%;
+                        background-image: url('../assets/images/music/sushi.png');
+                    }
+
+                    &-3 {
+                        aspect-ratio: 4550/3550;
+                        width: 30%;
+                        background-image: url('../assets/images/music/taco.png');
+                    }
+                }
+            }
+            .sick {
+                @include bg-image;
+                display: none;
+                aspect-ratio: 3200/3760;
+                width: 35%;
+                background-image: url('../assets/images/music/sick.png');
+            }
+        }
+    }
     .content {
         .piano-popup {
             @include flex-center;
@@ -104,7 +251,7 @@
                 margin-top: 5%;
                 aspect-ratio: 4/3;
                 width: 30%;
-                background-image: url('../assets/images/piano.png');
+                background-image: url('../assets/images/music/piano.png');
             }
             .error {
                 @include bg-image;
@@ -113,7 +260,7 @@
                 left: 47.5%;
                 aspect-ratio: 50/45;
                 width: 5%;
-                background-image: url('../assets/images/error.png');
+                background-image: url('../assets/images/music/error.png');
                 opacity: 0;
                 transform: translateX(0%) translateY(0%);
                 transition: opacity .5, transform .5s;
@@ -154,7 +301,7 @@
                 left: 40%;
                 aspect-ratio: 50/45;
                 width: 20%;
-                background-image: url('../assets/images/success.png');
+                background-image: url('../assets/images/music/success.png');
                 opacity: 0;
                 transition: opacity .5, transform .5s;
     
@@ -174,35 +321,35 @@
                     left: 20%;
                     aspect-ratio: 240/624;
                     width: 5%;
-                    background-image: url('../assets/images/note-1.png');
+                    background-image: url('../assets/images/music/note-1.png');
                 }
                 &-2 {
                     top: 50%;
                     left: 75%;
                     aspect-ratio: 1;
                     width: 5%;
-                    background-image: url('../assets/images/note-2.png');
+                    background-image: url('../assets/images/music/note-2.png');
                 }
                 &-3 {
                     top: 57%;
                     left: 15%;
                     aspect-ratio: 1;
                     width: 5%;
-                    background-image: url('../assets/images/note-3.png');
+                    background-image: url('../assets/images/music/note-3.png');
                 }
                 &-4 {
                     top: 22%;
                     left: 80%;
                     aspect-ratio: 20/16;
                     width: 3%;
-                    background-image: url('../assets/images/note-4.png');
+                    background-image: url('../assets/images/music/note-4.png');
                 }
                 &-5 {
                     top: 12%;
                     left: 45%;
                     aspect-ratio: 20/16;
                     width: 3.5%;
-                    background-image: url('../assets/images/note-5.png');
+                    background-image: url('../assets/images/music/note-5.png');
                 }
     
                 &:nth-of-type(n) {
@@ -256,7 +403,7 @@
                 background-color: transparent;
                 aspect-ratio: 500/178;
                 width: 18%;
-                background-image: url('../assets/images/start.png');
+                background-image: url('../assets/images/music/start.png');
                 opacity: 0;
                 cursor: none;
                 transition: opacity .3s;

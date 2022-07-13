@@ -26,6 +26,7 @@ html, body, #app {
    // text-align: center;
 
    -webkit-tap-highlight-color: transparent;
+   user-select: none;
 
    .content {
       @include content;
