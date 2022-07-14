@@ -1,8 +1,10 @@
 import classNames from "classnames"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import doorOpen from 'url:../assets/sound/door-open.mp3'
 
 export default function Lobby(props) {
 
+    const sound = useRef()
     const musicStatus = props.musicStatus
     const monsterStatus = props.monsterStatus
     const mazeStatus = props.mazeStatus
@@ -28,6 +30,8 @@ export default function Lobby(props) {
                 setOpenDoor(index)
                 
                 if (levelStatus[i] === 'unlock') {
+                    sound.current.src = doorOpen
+                    sound.current.play()
                     setTimeout(() => {
                         document.location.href=`/level/${level[i]}`
                     }, [1500])
@@ -47,8 +51,10 @@ export default function Lobby(props) {
 
     }, [musicStatus, mazeStatus, monsterStatus, openDoor])
 
+
     return (
         <div className="lobby">
+            <audio ref={sound} />
             <div className="content">
                 <div className="door-area">
                     {doors}

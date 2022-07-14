@@ -1,6 +1,6 @@
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { PerspectiveCamera, OrbitControls, FirstPersonControls } from '@react-three/drei'
+import { PerspectiveCamera, OrbitControls, FirstPersonControls, MapControls, Box, useCursor } from '@react-three/drei'
 import { useEffect, useState, useRef } from 'react'
 
 import { Canvas, ambientLight, pointLight } from "@react-three/fiber"
@@ -17,19 +17,23 @@ import sisterBedroom from 'url:../assets/gltf/sister-bedroom.glb'
 import dungeon from 'url:../assets/gltf/dungeon.glb'
 import meatSteak from 'url:../assets/gltf/meat-steak.glb'
 import fantasyBook from 'url:../assets/gltf/fantasy-book.glb'
+import treature from 'url:../assets/gltf/treature.glb'
 
 import dungeonMusic from 'url:../assets/sound/dungeon.wav'
+import classNames from 'classnames'
 
 export default function Maze(props) {
 
     const setStatus = props.setStatus
     const bgSound = useRef()
     const maze = useLoader(GLTFLoader, dungeon)
-    const present = useLoader(GLTFLoader, ramen)
+    const present = useLoader(GLTFLoader, treature)
 
 
     const [ hover, setHover ] = useState()
     const [ color, setColor ] = useState()
+
+    const [ text, setText ] = useState(false)
 
 
     useEffect(() => {
@@ -43,9 +47,16 @@ export default function Maze(props) {
         hover === true ? setColor('#FFFFFF') : setColor('#EC2D2D')
     }, [hover])
 
+    const paperClass = classNames('paper', {
+        'show': text !== false
+    })
+
+    useCursor(hover, /*'pointer', 'auto'*/)
+
     return(
         <>
         <audio ref={bgSound} />
+        <div className={paperClass}>{text}</div>
         <Canvas>
             <ambientLight />
             {/* <pointLight position={[10, 10, 10]} /> */}
@@ -54,10 +65,18 @@ export default function Maze(props) {
             {/* Dungeon position setting */}
             {/* <primitive object={gltf.scene} scale={3} position={[19, -2, -180]}/> */}
             {/* <FirstPersonControls lookSpeed={0.1} lookVertical={false} constrainVertical={false} movementSpeed={8}/> */}
-
+            <Box
+                args={[2, 2, 2]}
+                position={[7.8, -1, -165]}
+                onPointerOver={() => setHover(true)} onPointerOut={() => setHover(false)}
+                onClick={() => {setText('你找到我了！')}}
+            >
+                {/* <meshPhongMaterial color={color} /> */}
+            </Box>
             <primitive object={maze.scene} scale={3} position={[19, -2, -180]}/>
-            <primitive object={present.scene} scale={10} position={[19, -2, -180]}/>
-            <OrbitControls />
+            <primitive object={present.scene} scale={0.5} position={[19, -2, -180]}/>
+            {/* <OrbitControls /> */}
+            <MapControls />
             {/* <OrthographicCamera position={[0, 0, 100]} zoom={30} /> */}
         </Canvas>
         </>

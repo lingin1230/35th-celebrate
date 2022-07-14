@@ -9,6 +9,10 @@ import soundG from 'url:../assets/sound/G.mp3'
 import soundA from 'url:../assets/sound/A.mp3'
 import soundB from 'url:../assets/sound/B.mp3'
 import barMusic from 'url:../assets/sound/bar.mp3'
+import meow from 'url:../assets/sound/cat.mp3'
+import coin from 'url:../assets/sound/coin.mp3'
+import powerDown from 'url:../assets/sound/power-down.mp3'
+import success from 'url:../assets/sound/success.mp3'
 
 
 export default function Music(props) {
@@ -46,6 +50,8 @@ export default function Music(props) {
             if (currentNote + 1 === correct.length) {
                 if (e.keyCode === correct[currentNote]) {
                     setTimeout(() => {
+                        sound.current.src = success
+                        sound.current.play()
                         setGame('success')
                         axios.patch('http://localhost:3000/level_status', {
                             "music": 'complete',
@@ -80,6 +86,7 @@ export default function Music(props) {
     useEffect(() => {
         bgSound.current.src = barMusic
         bgSound.current.play()
+        bgSound.current.loop = true
     }, [])
 
     useEffect(() => {
@@ -103,12 +110,25 @@ export default function Music(props) {
         setMusicNote(notes)
     }, [activeNote])
 
+    useEffect(() => {
+        if (sick === true) {
+            sound.current.src = powerDown
+            sound.current.play()
+        }
+    }, [sick])
+
     function avatarClick(avatar) {
         setTalk(avatar)
         if (avatar === 'cat') {
+            sound.current.src = meow
+            sound.current.play()
             setTimeout(() => {
                 setPiano(true)
             }, [3000])
+        }
+        else {
+            sound.current.src = coin
+            sound.current.play()
         }
     }
 
