@@ -60,19 +60,12 @@ export default function Music(props) {
                         .then((res) => {
                             setStatus(res.data.status)
                         })
-                        // setTimeout(() => {
-                        //     document.location.href = '/lobby'
-                        // }, [1500])
                     }, [1000])
 
                     setTimeout(() => {
                         setTalk('cat')
                         setPiano(false)
                     }, [2500])
-
-                    setTimeout(() => {
-                        document.location.href = '/lobby'
-                    }, [14000])
 
                 } else {
                     setActiveNote(null)
@@ -132,9 +125,6 @@ export default function Music(props) {
         if (avatar === 'cat') {
             sound.current.src = meow
             sound.current.play()
-            // setTimeout(() => {
-            //     setPiano(true)
-            // }, [3000])
         }
         else {
             sound.current.src = coin
@@ -146,6 +136,11 @@ export default function Music(props) {
         const targetChild = event.target.children
         if (targetChild.length === 1 && targetChild[0].className === 'popup-content') {
             setTalk(null)
+        }
+    }
+    function goLobby() {
+        if (status === 'complete') {
+            document.location.href = '/lobby'
         }
     }
 
@@ -205,11 +200,9 @@ export default function Music(props) {
                         <div className="sick"></div>
                     </div>
                 </div>
-                <div className={catClass} onClick={() => {avatarClick('cat')}}>
-                    {/* <div className="talk"></div> */}
-                </div>
+                <div className={catClass} onClick={() => {avatarClick('cat')}}></div>
                 <div className="cat-popup" onClick={closePopup}>
-                    <div className="popup-content">
+                    <div className="popup-content" onClick={goLobby}>
                         { status !== 'complete'
                             ?
                             <>
