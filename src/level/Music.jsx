@@ -17,6 +17,7 @@ import success from 'url:../assets/sound/success.mp3'
 
 export default function Music(props) {
 
+    const status = props.status
     const setStatus = props.setStatus
 
     const [ musicNote, setMusicNote ] = useState([])
@@ -41,7 +42,6 @@ export default function Music(props) {
     }
     const correct = [67, 68, 69, 67, 68, 67, 70]
     
-
     function keyDown(e) {
         if (pianoNote[e.keyCode] !== undefined && game === true) {
             sound.current.src = pianoNote[e.keyCode]
@@ -60,10 +60,20 @@ export default function Music(props) {
                         .then((res) => {
                             setStatus(res.data.status)
                         })
-                        setTimeout(() => {
-                            document.location.href = '/lobby'
-                        }, [1500])
+                        // setTimeout(() => {
+                        //     document.location.href = '/lobby'
+                        // }, [1500])
                     }, [1000])
+
+                    setTimeout(() => {
+                        setTalk('cat')
+                        setPiano(false)
+                    }, [2500])
+
+                    setTimeout(() => {
+                        document.location.href = '/lobby'
+                    }, [14000])
+
                 } else {
                     setActiveNote(null)
                     setGame('error')
@@ -122,9 +132,9 @@ export default function Music(props) {
         if (avatar === 'cat') {
             sound.current.src = meow
             sound.current.play()
-            setTimeout(() => {
-                setPiano(true)
-            }, [3000])
+            // setTimeout(() => {
+            //     setPiano(true)
+            // }, [3000])
         }
         else {
             sound.current.src = coin
@@ -196,10 +206,40 @@ export default function Music(props) {
                     </div>
                 </div>
                 <div className={catClass} onClick={() => {avatarClick('cat')}}>
-                    <div className="talk"></div>
+                    {/* <div className="talk"></div> */}
+                </div>
+                <div className="cat-popup" onClick={closePopup}>
+                    <div className="popup-content">
+                        { status !== 'complete'
+                            ?
+                            <>
+                            <div className="talk">
+                                你好啊，勇者<br/>
+                                你說你在找一名叫 QQ 的珠寶商？<br/>
+                                這裡時常有些群聚鬥毆，像她那種愛叫囂的酒客，<br/>
+                                老早就被人看不順眼被抓去教訓了！<br/><br/>
+                                既然你這麼想找到他，<br/>
+                                你替我彈一手好曲子，<br/>
+                                我就告訴你她被帶到哪去了如何？
+                            </div>
+                            <button className="go" onClick={() => {setPiano(true); setTalk(null)}}></button>
+                            </>
+                            :
+                            <div className="talk">
+                                彈得真彆扭...<br/>
+                                看在你這麼努力的份上我還是告訴你好了<br/>
+                                他被來鎮上觀光食人族抓走了！<br/>
+                                現在他們要帶她回村莊裡享用，<br/>
+                                這時間想必已經在準備配料了吧，<br/>
+                                我看你還是帶些餐具上路吧，<br/>
+                                搞不好還能吃上幾口好料，meow～
+                            </div>
+                        }
+                        <div className="cat"></div>
+                        
+                    </div>
                 </div>
                 <div className="content">
-
                     <div className={pianoPopup}>
                         <div className="piano"></div>
                         <div className={errorClass}></div>

@@ -49,7 +49,7 @@ function App() {
                     </Route>
 
                     <Route path="/level/music">
-                        <Music setStatus={setMusicStatus}/>
+                        <Music status={musicStatus} setStatus={setMusicStatus}/>
                     </Route>
 
                     <Route path="/level/monster">

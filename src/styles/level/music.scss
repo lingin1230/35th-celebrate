@@ -17,7 +17,7 @@
         left: 0;
         background-image: url('../assets/images/music/music-bg.png');
         background-size: cover;
-        background-position: 0% 100%;
+        background-position: 0% calc(100% + 25px);
     }
     .customer {
         position: absolute;
@@ -29,7 +29,7 @@
             aspect-ratio: 500/1060;
             // width: 200px;
             height: 350px;
-            bottom: 45px;
+            bottom: 20px;
             left: 1201px;
             background-image: url('../assets/images/music/wizard.png');
 
@@ -49,7 +49,7 @@
             @include bg-image;
             aspect-ratio: 449/832;
             height: 270px;
-            bottom: 700px;
+            bottom: 675px;
             left: 1545px;
             background-image: url('../assets/images/music/ghost.png');
 
@@ -70,7 +70,7 @@
             @include bg-image;
             aspect-ratio: 801/596;
             height: 270px;
-            bottom: 700px;
+            bottom: 675px;
             left: -90px;
             background-image: url('../assets/images/music/pot.png');
 
@@ -84,7 +84,7 @@
             @include bg-image;
             aspect-ratio: 1440/929;
             height: 281px;
-            bottom: 45px;
+            bottom: 20px;
             left: 520px;
             background-image: url('../assets/images/music/table.png');
 
@@ -108,22 +108,67 @@
             @include bg-image;
             aspect-ratio: 1;
             width: 150px;
-            bottom: 860px;
+            bottom: 835px;
             left: 742px;
             background-image: url('../assets/images/music/cat.png');
 
             &.talk {
-                &::after {
-                    content: "你要找的人剛剛被抓走了，如果你彈一首讓我滿意的好曲子我就告訴他們前往哪裡了！";
-                    position: absolute;
-                    @include bg-image;
-                    width: 150%;
-                    top: 10%;
-                    left: 100%;
-                    aspect-ratio: 100 / 64;
-                    background-image: url('../assets/images/music/talk-3.png');
-                    padding: 5% 6% 1% 12%;
-                    box-sizing: border-box;
+                + .cat-popup {
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    .cat-popup {
+        @include flex-center;
+        display: none;
+        // display: flex;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 100;
+
+        .popup-content {
+            @include bg-image;
+            @include flex-center;
+            position: relative;
+            flex-direction: column;
+            aspect-ratio: 2177/1473;
+            width: 60%;
+            background-image: url('../assets/images/music/board.png');
+            
+            .talk {
+                font-size: 30px;
+            }
+            .cat {
+                @include bg-image;
+                position: absolute;
+                left: 65%;
+                top: 45%;
+                aspect-ratio: 2116/1458;
+                width: 60%;
+                background-image: url('../assets/images/music/cat-detail.png');
+            }
+            button.go {
+                @include bg-image;
+                margin-top: 5%;
+                aspect-ratio: 500/178;
+                width: 20%;
+                background-color: transparent;
+                border: none;
+                background-image: url('../assets/images/music/start.png');
+                cursor: pointer;
+                opacity: 0;
+                animation: button-show 1s 7s forwards;
+            }
+
+            @keyframes button-show {
+                100% {
+                    opacity: 1;
                 }
             }
         }
