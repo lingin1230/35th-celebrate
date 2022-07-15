@@ -17,7 +17,7 @@
         left: 0;
         background-image: url('../assets/images/music/music-bg.png');
         background-size: cover;
-        background-position: 0% calc(100% + 25px);
+        // background-position: 0% calc(100% + 25px);
     }
     .customer {
         position: absolute;
@@ -29,7 +29,7 @@
             aspect-ratio: 500/1060;
             // width: 200px;
             height: 350px;
-            bottom: 20px;
+            bottom: 45px;
             left: 1201px;
             background-image: url('../assets/images/music/wizard.png');
 
@@ -49,7 +49,7 @@
             @include bg-image;
             aspect-ratio: 449/832;
             height: 270px;
-            bottom: 675px;
+            bottom: 700px;
             left: 1545px;
             background-image: url('../assets/images/music/ghost.png');
 
@@ -70,7 +70,7 @@
             @include bg-image;
             aspect-ratio: 801/596;
             height: 270px;
-            bottom: 675px;
+            bottom: 700px;
             left: -90px;
             background-image: url('../assets/images/music/pot.png');
 
@@ -84,7 +84,7 @@
             @include bg-image;
             aspect-ratio: 1440/929;
             height: 281px;
-            bottom: 20px;
+            bottom: 45px;
             left: 520px;
             background-image: url('../assets/images/music/table.png');
 
@@ -108,7 +108,7 @@
             @include bg-image;
             aspect-ratio: 1;
             width: 150px;
-            bottom: 835px;
+            bottom: 860px;
             left: 742px;
             background-image: url('../assets/images/music/cat.png');
 

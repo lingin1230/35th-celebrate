@@ -35,14 +35,52 @@
 
                 transition: transform 1s ,margin-left .9s .1s;
     
+                &::before {
+                    @include flex-center;
+                    @include bg-image;
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    aspect-ratio: 2177/1473;
+                    background-image: url('../assets/images/board.png');
+                    font-size: 32px;
+                    font-weight: bold;
+                    text-align: center;
+                    filter: grayscale(50);
+                    transform: translateY(-130%);
+                    opacity: 0;
+                    transition: opacity .3s;
+                }
+
                 &-music {
                     background-image: url('../assets/images/door-1.png');
+
+                    &:hover {
+                        &::before {
+                            content: 'Skeleton Bar';
+                            opacity: 1;
+                        }
+                    }
                 }
                 &-monster {
                     background-image: url('../assets/images/door-2.png');
+
+                    &:hover {
+                        &::before {
+                            content: 'Cannibals Jungle';
+                            opacity: 1;
+                        }
+                    }
                 }
                 &-maze {
                     background-image: url('../assets/images/door-3.png');
+
+                    &:hover {
+                        &::before {
+                            content: 'Isekai Maze';
+                            opacity: 1;
+                        }
+                    }
                 }
     
                 &.unlock {
@@ -54,7 +92,10 @@
                 }
                 &.complete {
                     @include flex-center;
-    
+                    
+                    &::before {
+                        display: none;
+                    }
                     &::after {
                         @include bg-image;
                         content: '';

@@ -1,3 +1,18 @@
+.paper {
+    @include bg-image;
+    position: absolute;
+    aspect-ratio: 1375/1438;
+    width: 20vw;
+    background-image: url('../assets/images/paper.png');
+    z-index: 100;
+    padding: 5% 11% 15% 9%;
+
+    display: none;
+    
+    &.show {
+        display: block;
+    }
+}
 canvas {
     background-color: #000;
 }

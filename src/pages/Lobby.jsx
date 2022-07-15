@@ -1,10 +1,12 @@
 import classNames from "classnames"
 import { useEffect, useRef, useState } from "react"
 import doorOpen from 'url:../assets/sound/door-open.mp3'
+import dropping from 'url:../assets/sound/dropping.mp3'
 
 export default function Lobby(props) {
 
     const sound = useRef()
+    const bgSound = useRef()
     const musicStatus = props.musicStatus
     const monsterStatus = props.monsterStatus
     const mazeStatus = props.mazeStatus
@@ -12,6 +14,12 @@ export default function Lobby(props) {
     const [ doors, setDoors ] = useState([])
     const [ openDoor, setOpenDoor ] = useState(null)
 
+
+    useEffect(() => {
+        bgSound.current.src = dropping
+        bgSound.current.loop = true
+        bgSound.current.play()
+    }, [])
 
     useEffect(() => {
 
@@ -54,6 +62,7 @@ export default function Lobby(props) {
 
     return (
         <div className="lobby">
+            <audio ref={bgSound} />
             <audio ref={sound} />
             <div className="content">
                 <div className="door-area">

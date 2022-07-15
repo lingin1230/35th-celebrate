@@ -5,6 +5,31 @@
     height: 100%;
     // background-color: #CCB88F;
 
+    .result {
+        @include bg-image;
+        position: absolute;
+        z-index: 101;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        opacity: 0;
+        transition: opacity .5s;
+
+        &.success {
+            aspect-ratio: 50/45;
+            width: 20%;
+            background-image: url('../assets/images/success.png');
+            opacity: 1;
+        }
+
+        &.fail {
+            aspect-ratio: 50/45;
+            width: 15%;
+            background-image: url('../assets/images/error.png');
+            opacity: 1;
+        }
+    }
+
     &::after {
         content: '';
         @include bg-image;
@@ -17,7 +42,7 @@
         left: 0;
         background-image: url('../assets/images/bg-5.png');
         background-size: cover;
-        background-position: center;
+        background-position: 0% 100%
     }
     .status {
         @include bg-image;
@@ -86,7 +111,8 @@
             &::before {
                 content: '';
                 position: absolute;
-                top: -20%;
+                top: calc(-20% + 2px);
+                left: 2px;
                 width: calc(100% - 4px);
                 height: 16px;
                 background-color: red;
@@ -236,6 +262,71 @@
         100% {
             
             transform: translateX(-50%) scaleX(1);
+        }
+    }
+
+    .popup {
+        @include flex-center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 100;
+        cursor: pointer;
+
+        &.hide {
+            display: none
+        }
+
+        .popup-content {
+            @include bg-image;
+            @include flex-center;
+            position: relative;
+            flex-direction: column;
+            aspect-ratio: 2177/1473;
+            width: 40%;
+            background-image: url('../assets/images/music/board.png');
+            font-size: 30px;
+
+            button.start {
+                @include bg-image;
+                margin-top: 10%;
+                border: none;
+                background-color: transparent;
+                aspect-ratio: 500/178;
+                width: 25%;
+                background-image: url('../assets/images/music/start.png');
+                cursor: pointer;
+    
+                &:focus-visible {
+                    outline: none;
+                }
+                &:hover {
+                    filter: brightness(0.9);
+                }
+            }
+
+            .monkey-detail {
+                @include bg-image;
+                position: absolute;
+                top: 40%;
+                left: 80%;
+                aspect-ratio: 1224/2278;
+                width: 35%;
+                background-image: url('../assets/images/monkey-detail.png');
+            }
+
+            .girl-detail {
+                @include bg-image;
+                position: absolute;
+                top: 40%;
+                left: 80%;
+                aspect-ratio: 1393/2090;
+                width: 35%;
+                background-image: url('../assets/images/girl-detail.png');
+            }
         }
     }
 }

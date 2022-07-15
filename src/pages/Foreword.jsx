@@ -6,13 +6,14 @@ export default function Foreword() {
     const [ text, setText ] = useState(null)
     const [ pageTrasition, setPageTransition ] = useState(false)
 
+
     useEffect(() => {
         setText(
             <>
             <div className="text" onClick={() => {nextText()}}>
                 Dear Furecool: <br/><br/>
                 對於身為勇者的你，應該一生都致力於尋找寶物吧？<br/>
-                最近大陸之中謠傳有著價值連城的寶物，就隱藏在魔物小鎮裡面！
+                最近世界之中謠傳有著價值連城的寶物，就隱藏在魔物大陸裡面！
             </div>
             </>
         )
@@ -21,9 +22,9 @@ export default function Foreword() {
     function nextText() {
         setText(
             <div className="text" onClick={() => {goLobby()}}>
-                在鎮上有一名叫做 QQ 的珠寶商，
+                在農荒小鎮上有一名叫做 QQ 的珠寶商，
                 據說她擁有寶物的藏寶圖！<br/>
-                想必愛喝酒的她，正在骷髏酒吧開心暢飲吧？<br/><br/>
+                想必愛喝酒的她，正在 Skeleton Bar 開心暢飲吧？<br/><br/>
                 快去找到她！取得寶藏的所在地吧！
             </div>
         )
