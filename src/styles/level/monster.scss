@@ -68,8 +68,8 @@
         @include bg-image;
         position: absolute;
         aspect-ratio: 1;
-        height: 400px;
-        right: 20%;
+        height: 40%;
+        right: 10%;
         bottom: 5%;
         background-position: center;
         cursor: pointer;
@@ -216,7 +216,7 @@
         left: 20%;
         bottom: 5%;
         aspect-ratio: 1;
-        height: 400px;
+        height: 35%;
         // background-position: center;
         background-image: url('../assets/images/girl-1.png');
         animation: girl-animation 1s infinite linear;

@@ -32,38 +32,40 @@ function App() {
     }, [musicStatus, monsterStatus, mazeStatus])
 
     return (
-        <>
-            <Router>
-                {/* <Switch> */}
+        <>  
+            <div className="screen">
+                <Router>
+                    {/* <Switch> */}
 
-                    <Route path="/foreword">
-                        <Foreword />
-                    </Route>
+                        <Route path="/foreword">
+                            <Foreword />
+                        </Route>
 
-                    <Route path="/lobby">
-                        <Lobby
-                            musicStatus={musicStatus}
-                            mazeStatus={mazeStatus}
-                            monsterStatus={monsterStatus}
-                        />
-                    </Route>
+                        <Route path="/lobby">
+                            <Lobby
+                                musicStatus={musicStatus}
+                                mazeStatus={mazeStatus}
+                                monsterStatus={monsterStatus}
+                            />
+                        </Route>
 
-                    <Route path="/level/music">
-                        <Music status={musicStatus} setStatus={setMusicStatus}/>
-                    </Route>
+                        <Route path="/level/music">
+                            <Music status={musicStatus} setStatus={setMusicStatus}/>
+                        </Route>
 
-                    <Route path="/level/monster">
-                        <Monster setStatus={setMonsterStatus}/>
-                    </Route>
+                        <Route path="/level/monster">
+                            <Monster setStatus={setMonsterStatus}/>
+                        </Route>
 
-                    <Route path="/level/maze">
-                        <Suspense fallback={'error'}>
-                            <Maze setStatus={setMazeStatus}/>
-                        </Suspense>
-                    </Route>
+                        <Route path="/level/maze">
+                            <Suspense fallback={'error'}>
+                                <Maze setStatus={setMazeStatus}/>
+                            </Suspense>
+                        </Route>
 
-                {/* </Switch> */}
-            </Router>
+                    {/* </Switch> */}
+                </Router>
+            </div>
         </>
     )
 }

@@ -5,7 +5,7 @@
 }
 @mixin content {
    width: 85%;
-   min-width: 1200px;
+   min-width: 1000px;
 }
 @mixin bg-image {
    background-size: contain;
@@ -14,10 +14,16 @@
 
 html, body, #app {
    @include flex-center;
+   @include bg-image;
    width: 100vw;
    height: 100vh;
    margin: 0;
    padding: 0;
+
+   background-image: url('../assets/images/pattern-3.png');
+   background-size: 10%;
+   background-repeat: repeat;
+   z-index: 0;
 
    font-family: 'Chakra Petch', 'Noto Sans TC', sans-serif;
    // font-family: 'Chakra Petch', sans-serif;
@@ -28,10 +34,20 @@ html, body, #app {
    -webkit-tap-highlight-color: transparent;
    user-select: none;
 
-   .content {
-      @include content;
-      @include flex-center;
-      margin: 0 auto;
+   .screen {
+      position: relative;
+      width: 100%;
+      z-index: 0;
+      aspect-ratio: 1920/1080;
+      border-top: 7.5px solid #322f2e;
+      border-bottom: 7.5px solid #322f2e;
+      background-color: #322f2e;
+
+      .content {
+         @include content;
+         @include flex-center;
+         margin: 0 auto;
+      }
    }
 }
 

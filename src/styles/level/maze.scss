@@ -1,8 +1,10 @@
 .paper {
+    @include flex-center;
     @include bg-image;
     position: absolute;
     aspect-ratio: 1375/1438;
-    width: 20vw;
+    width: 15vw;
+    font-size: 20px;
     background-image: url('../assets/images/paper.png');
     z-index: 100;
     padding: 5% 11% 15% 9%;
@@ -10,7 +12,37 @@
     display: none;
     
     &.show {
-        display: block;
+        display: flex;
+    }
+}
+.treasure{
+    @include flex-center;
+    @include bg-image;
+    position: absolute;
+    aspect-ratio: 2177/1473;
+    width: 40vw;
+    font-size: 20px;
+    background-image: url('../assets/images/board.png');
+    z-index: 100;
+    // padding: 5% 11% 15% 9%;
+    box-sizing: border-box;
+
+    display: none;
+    
+    &.show {
+        display: flex;
+    }
+    &.open {
+        .box {
+            background-image: url('../assets/images/treasure-open.png');
+        }
+    }
+
+    .box {
+        @include bg-image;
+        aspect-ratio: 518/468;
+        width: 30%;
+        background-image: url('../assets/images/treasure-close.png');
     }
 }
 canvas {
