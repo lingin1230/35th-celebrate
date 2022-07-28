@@ -44,6 +44,40 @@
         width: 30%;
         background-image: url('../assets/images/treasure-close.png');
     }
+    .talk {
+
+    }
+
+    .monkey-detail {
+        @include bg-image;
+        position: absolute;
+        top: 40%;
+        left: 80%;
+        aspect-ratio: 1224/2278;
+        width: 35%;
+        background-image: url('../assets/images/monkey-detail.png');
+    }
+    .btn-area {
+        @include flex-center;
+        justify-content: space-around;
+        width: 80%;
+
+        button {
+            @include bg-image;
+            border: none;
+            background-color: transparent;
+            background-image: url('../assets/images/button.png');
+            aspect-ratio: 168/56;
+            width: 35%;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(0.7);
+            }
+        }
+    }
 }
 canvas {
     background-color: #000;

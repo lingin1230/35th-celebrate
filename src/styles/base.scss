@@ -35,6 +35,7 @@ html, body, #app {
    user-select: none;
 
    .screen {
+      @include flex-center;
       position: relative;
       width: 100%;
       z-index: 0;
