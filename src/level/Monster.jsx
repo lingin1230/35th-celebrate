@@ -109,7 +109,7 @@ export default function Monster() {
                     { popup === 'begin' &&
                         <>
                         <div>
-                            快！快救救我！我快被壞人抓到了！
+                            快！快救救我！我快被生吞活剝了！
                         </div>
                         <button class="start" onClick={()=> {setPopup('playing')}}></button>
                         </>
@@ -125,9 +125,9 @@ export default function Monster() {
                     { popup === 'girl' &&
                         <>
                         <div>
-                            身為一位邪惡女童食人魔<br/>
-                            居然被一名普通人類給殺死了！！！<br/>
-                            我做鬼也不會...ㄅㄜ ㄌㄜ...
+                            身為殘暴的食人族<br/>
+                            居然被一名普通人類給殺死了！<br/>
+                            我做鬼也不會...放過你...
                         </div>
                         <div className="girl-detail"></div>
                         </>

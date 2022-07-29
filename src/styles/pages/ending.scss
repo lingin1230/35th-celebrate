@@ -1,0 +1,44 @@
+.ending {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    ul {
+        list-style: none;
+        transform: translateY(0%);
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        animation: up-up 47s linear forwards;
+
+        li {
+            @include flex-center;
+            width: 100vw;
+            color: #FFF;
+            
+            div {
+                font-size: 1.3vw;
+                line-height: 2.5vw;
+
+                &:first-child {
+                    width: 50%;
+                    text-align: right;
+                    margin-right: 2vw;
+                }
+                &:last-child {
+                    width: 50%;
+                    text-align: left;
+                    color: #FFF;
+                }
+            }
+        }
+    }
+
+    @keyframes up-up {
+        0% {
+            transform: translateY(100vh);
+        }
+        100% {
+            transform: translateY(calc(0vh - 100%));
+        }
+    }
+}

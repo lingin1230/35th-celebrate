@@ -138,11 +138,11 @@
             position: relative;
             flex-direction: column;
             aspect-ratio: 2177/1473;
-            width: 60%;
+            width: 50%;
             background-image: url('../assets/images/music/board.png');
             
             .talk {
-                font-size: 30px;
+                font-size: 1.3vw;
             }
             .cat {
                 @include bg-image;
@@ -191,21 +191,22 @@
             position: relative;
             flex-direction: column;
             aspect-ratio: 2177/1473;
-            width: 60%;
+            width: 40%;
             background-image: url('../assets/images/music/board.png');
 
 
             &::before {
                 content: '你泡了一場熱水澡，覺得通體舒暢';
                 display: block;
-                font-size: 30px;
+                font-size: 1.3vw;
+                font-weight: bold;
                 margin-bottom: 50px;
             }
             .hot-pot {
                 @include bg-image;
                 @include flex-center;
                 aspect-ratio: 3200/3760;
-                width: 35%;
+                width: 30%;
                 background-image: url('../assets/images/music/hot-pot.png');
             }
         }
@@ -229,13 +230,14 @@
             position: relative;
             flex-direction: column;
             aspect-ratio: 2177/1473;
-            width: 60%;
+            width: 40%;
             background-image: url('../assets/images/music/board.png');
 
             &::before {
                 content: '這裡的食物都有種奇怪的味道...';
                 display: block;
-                font-size: 30px;
+                font-size: 1.3vw;
+                font-weight: bold;
                 margin-bottom: 70px;
             }
 
@@ -272,7 +274,7 @@
                 @include bg-image;
                 display: none;
                 aspect-ratio: 3200/3760;
-                width: 35%;
+                width: 30%;
                 background-image: url('../assets/images/music/sick.png');
             }
         }

@@ -38,6 +38,8 @@ export default function Maze(props) {
     const [ color, setColor ] = useState()
     const [ text, setText ] = useState(false)
     const [ treasure, setTreasure ] = useState(false)
+    // const [ text, setText ] = useState('錯邊囉～')
+    // const [ treasure, setTreasure ] = useState(false)
 
     useCursor(hover)
 
@@ -75,6 +77,10 @@ export default function Maze(props) {
     function ending() {
         sound.current.src = success
         sound.current.play()
+
+        setTimeout(() => {
+            document.location.href = '/ending'
+        }, [3000])
     }
 
     function reset() {
@@ -130,8 +136,8 @@ export default function Maze(props) {
                     啊...啊哈哈哈，歹勢歹勢～<br/>
                     上個月我拿到藏寶圖之後<br/>
                     我就迫不及待地來尋寶了，<br/>
-                    找到寶物後放到我的包包裡，<br/>
-                    之後去酒吧大喝個過癮就忘記這回事了<br/>
+                    我把它放到我的包包裡後，<br/>
+                    去酒吧大喝個過癮就忘記這回事了<br/>
                     啊哈哈哈～
                 </div>
                 <div className="monkey-detail"></div>

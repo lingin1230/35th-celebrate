@@ -85,7 +85,7 @@
             width: 80%;
             top: -60%;
             left: 100%;
-            font-size: 32px;
+            // font-size: 32px;
             aspect-ratio: 100 / 64;
             background-image: url('../assets/images/talk-3.png');
             box-sizing: border-box;
@@ -232,7 +232,7 @@
             width: 80%;
             top: -50%;
             left: 50%;
-            font-size: 32px;
+            // font-size: 32px;
             aspect-ratio: 100 / 64;
             background-image: url('../assets/images/talk-3.png');
             box-sizing: border-box;
@@ -288,7 +288,8 @@
             aspect-ratio: 2177/1473;
             width: 40%;
             background-image: url('../assets/images/music/board.png');
-            font-size: 30px;
+            font-size: 1.4vw;
+            font-weight: bold;
 
             button.start {
                 @include bg-image;

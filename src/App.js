@@ -7,6 +7,7 @@ import Lobby from "./pages/Lobby"
 import Maze from "./level/Maze"
 import Monster from "./level/Monster"
 import Music from "./level/music"
+import Ending from "./pages/Ending"
 
 function App() {
     const [ musicStatus, setMusicStatus ] = useState(null)
@@ -61,6 +62,10 @@ function App() {
                             <Suspense fallback={'error'}>
                                 <Maze setStatus={setMazeStatus}/>
                             </Suspense>
+                        </Route>
+
+                        <Route path="/ending">
+                            <Ending />
                         </Route>
 
                     {/* </Switch> */}
